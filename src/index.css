@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.custom-cursor,
+  body.custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+.pixel-cursor-fill {
+  animation: pixel-cursor-hue 3s ease-in-out infinite;
+}
+
+@keyframes pixel-cursor-hue {
+  0%,
+  100% {
+    fill: #55c9ae;
+  }
+  50% {
+    fill: #ff7e6b;
+  }
+}
+
+.pixel-sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  animation: pixel-sparkle 0.7s steps(4, end) forwards;
+}
+
+@keyframes pixel-sparkle {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0.3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-up {
+    animation: none;
+  }
+}
